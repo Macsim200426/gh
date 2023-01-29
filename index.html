@@ -1,0 +1,36 @@
+<!doctype HTML>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    </head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    
+    <!-- add this script in order to load a large set of 3D model extensions-->
+    
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
+    <body style='margin : 0px; overflow: hidden;'>
+        <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+        <a-scene embedded arjs>
+
+        <a-assets>
+            <a-asset-item id="polon" response-type="arraybuffer" src="https://macsim200426.github.io/dg/ht.glb"></a-asset-item>
+        </a-assets>
+
+        
+
+        <a-marker preset="hiro">
+            <a-entity
+                gltf-model="#polon"
+                scale="1 1 1"
+                animation-mixer="clip:Armature|mixamo.com|Layer0";
+                
+                >
+            </a-entity>
+        </a-marker>
+
+        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
